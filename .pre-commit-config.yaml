@@ -1,12 +1,38 @@
 repos:
-  - repo: https://github.com/psf/black
-    rev: 24.3b0
+  - repo: local
     hooks:
       - id: black
-        language_version: python3.12
+        name: black
+        entry: black
+        language: system
+        types: [python]
 
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.18.0
+  - repo: local
     hooks:
       - id: ruff
+        name: ruff
+        entry: ruff
+        language: system
+        types: [python]
         args: ["check"]
+repos:
+  - repo: https://github.com/psf/black
+    repos:
+      # Use system-installed black to avoid remote git checkout failures when
+      # pre-commit cannot fetch specific tags in restricted/networked envs.
+      - repo: local
+        hooks:
+          - id: black
+            name: black
+            entry: black
+            language: system
+            types: [python]
+
+      - repo: local
+        hooks:
+          - id: ruff
+            name: ruff
+            entry: ruff
+            language: system
+            types: [python]
+            args: ["check"]
