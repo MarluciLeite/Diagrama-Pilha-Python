@@ -1,12 +1,15 @@
 repos:
-  - repo: https://github.com/psf/black
-    rev: 24.3b0
+  - repo: local
     hooks:
       - id: black
-        language_version: python3.12
+        name: black
+        entry: black
+        language: system
+        types: [python]
 
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.18.0
-    hooks:
       - id: ruff
+        name: ruff
+        entry: ruff
+        language: system
+        types: [python]
         args: ["check"]

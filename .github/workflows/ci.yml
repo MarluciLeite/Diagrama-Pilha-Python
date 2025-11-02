@@ -70,4 +70,10 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           files: coverage.xml
-          fail_ci_if_error: true
+          # If the repository or branch requires a CODECOV_TOKEN and it isn't
+          # provided, the uploader can fail the job. Make this non-fatal so CI
+          # doesn't fail because of missing token (e.g., in PRs from forks).
+          fail_ci_if_error: false
+        # Also don't fail the workflow if the action itself errors for any
+        # reason (extra safety).
+        continue-on-error: true
