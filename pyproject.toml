@@ -1,0 +1,17 @@
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.ruff]
+line-length = 88
+ignore = ["E203"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src"]
+ignore_missing_imports = true
+follow_imports = "silent"
+
+[build-system]
+requires = []
+build-backend = ""
